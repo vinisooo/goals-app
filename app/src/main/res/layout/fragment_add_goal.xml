@@ -51,7 +51,20 @@
             android:hint="Description"
         />
     </com.google.android.material.textfield.TextInputLayout>
+    
+    <ListView
+        android:id="@+id/checkList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </ListView>
 
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/checkChipGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.google.android.material.chip.ChipGroup>
+    
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
