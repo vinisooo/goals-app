@@ -31,13 +31,12 @@ class AddGoalFragment : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAddGoalBinding.inflate(inflater, container, false)
-        renderCheckChips()
         setListeners()
         return binding.root
     }
 
     private fun renderCheckChips() {
-        val adapter = CheckChipAdapter(requireContext(), itemlist)
+        val adapter = CheckChipAdapter(requireContext(), itemList)
         adapter.addToCheckChips(binding.checkChipGroup)
     }
 
@@ -59,5 +58,6 @@ class AddGoalFragment : BottomSheetDialogFragment() {
         itemList.add(check)
 
         binding.addCheck.text = ""
+        renderCheckChips()
     }
 }
