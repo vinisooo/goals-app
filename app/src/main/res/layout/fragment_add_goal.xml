@@ -51,12 +51,20 @@
             android:hint="Description"
         />
     </com.google.android.material.textfield.TextInputLayout>
-    
-    <ListView
-        android:id="@+id/checkList"
+
+    <EditText
+        android:id="@+id/goalValue"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </ListView>
+        android:layout_height="300dp"
+        android:hint="Insert the goal price" />
+    
+    <TextView
+        android:id="@+id/addCheck"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Insert a check"
+        />
+    
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/checkChipGroup"

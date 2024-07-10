@@ -18,6 +18,8 @@ class AddGoalFragment : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentAddGoalBinding
     private lateinit var addGoalViewModel: AddGoalViewModel
 
+    private var itemList: MutableList<Check> = mutableListOf()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val activity = requireActivity()
@@ -30,16 +32,32 @@ class AddGoalFragment : BottomSheetDialogFragment() {
     ): View? {
         binding = FragmentAddGoalBinding.inflate(inflater, container, false)
         renderCheckChips()
+        setListeners()
         return binding.root
     }
 
-    private fun renderCheckChips () {
-        val itemlist: List<Check> = listOf(
-            Check(id = 1, checked = true, name = "teste"),
-            Check(id = 2, checked = true, name = "teste")
-        )
-
+    private fun renderCheckChips() {
         val adapter = CheckChipAdapter(requireContext(), itemlist)
         adapter.addToCheckChips(binding.checkChipGroup)
+    }
+
+    private fun setListeners() {
+        binding.addCheck.setOnEditorActionListener{_, actionId, _ ->
+            if (actionId == android.view.inputmethod.EditorInfo.IME_ACTION_DONE) {
+                addCheck()
+                true
+            } else {
+                false
+            }
+        }
+    }
+
+    private fun addCheck () {
+        val newCheckName = binding.addCheck.text.toString()
+
+        val check = Check(id = 0, name=newCheckName, checked=false)
+        itemList.add(check)
+
+        binding.addCheck.text = ""
     }
 }
