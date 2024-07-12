@@ -8,6 +8,16 @@
     android:layout_height="match_parent"
     tools:context=".activities.Goals">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textFontWeight="@integer/material_motion_duration_long_2"
+        android:text="Hello, User! \n What about creating some goals?"
+        android:textColor="@color/green_2"
+        />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addGoal"
         android:layout_width="59dp"

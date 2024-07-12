@@ -1,11 +1,9 @@
 package com.example.goals.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.ui.node.getOrAddAdapter
 import androidx.lifecycle.ViewModelProvider
 import com.example.goals.R
 import com.example.goals.adapters.CheckChipAdapter

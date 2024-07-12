@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.Goals" parent="Theme.MaterialComponents.DayNight.DarkActionBar" />
+    <style name="Theme.Goals" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
 
     <style name="SquareFloatingActionButton" parent="">
         <item name="shapeAppearanceOverlay">@style/SquareShapeAppearanceOverlay</item>

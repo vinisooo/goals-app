@@ -62,17 +62,24 @@
         android:id="@+id/goalValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:hint="Insert the goal price"
+        android:inputType="numberDecimal"
+        android:hint="How much?"
         android:background="@drawable/input"
         android:layout_marginBottom="10sp"/>
 
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Check List"
+        android:textColor="@color/green_2"
+        android:layout_marginBottom="7sp"
+        />
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/addCheck"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Add Check"
+        android:hint="Add an item"
         android:inputType="text"
         android:background="@drawable/input"
         android:layout_marginBottom="10sp"
