@@ -8,72 +8,82 @@
     tools:context=".fragments.AddGoalFragment"
     android:orientation="vertical"
     android:padding="20sp"
-    android:background="@drawable/rounded"
     >
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:backgroundTint="@color/green_1"
-        android:layout_marginBottom="10sp"
-        android:layout_marginTop="-16sp"
+        android:layout_marginBottom="0sp"
+        android:layout_marginTop="-18sp"
         android:src="@drawable/baseline_grabber_24"
     />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New goal"
-        android:textSize="30sp"
+        android:text="Create a new Goal"
+        android:textSize="20sp"
         android:textColor="@color/green_2"
+        android:layout_marginBottom="10sp"
         android:gravity="center_horizontal"
         />
-
-    <com.google.android.material.textfield.TextInputLayout
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Name"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Description"
+        android:layout_height="wrap_content"
+        android:text="Unlock your potential and take the first step towards your dreams!"
+        android:textAlignment="center"
+        android:textColor="@color/gray_1"
+        android:maxWidth="100sp"
+        android:layout_marginBottom="20sp"
         />
-    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:inputType="text"
+        android:background="@drawable/input"
+        android:layout_marginBottom="10sp"
+    />
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Description"
+        android:background="@drawable/input"
+        android:layout_marginBottom="10sp"/>
 
     <EditText
         android:id="@+id/goalValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Insert the goal price" />
+        android:inputType="number"
+        android:hint="Insert the goal price"
+        android:background="@drawable/input"
+        android:layout_marginBottom="10sp"/>
 
-    <com.google.android.material.textfield.TextInputLayout
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/addCheck"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/addCheck"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Add Check"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
+        android:layout_height="wrap_content"
+        android:hint="Add Check"
+        android:inputType="text"
+        android:background="@drawable/input"
+        android:layout_marginBottom="10sp"
+        />
 
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/checkChipGroup"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30sp">
 
     </com.google.android.material.chip.ChipGroup>
     
@@ -84,6 +94,6 @@
         android:backgroundTint="@color/green_1"
         android:textColor="@color/white"
         android:textAlignment="center"
-        app:cornerRadius="12dp"
+        android:padding="12sp"
         />
 </LinearLayout>

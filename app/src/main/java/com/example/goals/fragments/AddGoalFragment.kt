@@ -14,7 +14,7 @@ import com.example.goals.models.Check
 import com.example.goals.viewmodels.AddGoalViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class AddGoalFragment : BottomSheetDialogFragment() {
+class AddGoalFragment : BottomSheetDialogFragment(), CheckChipAdapter.CheckChipCallback {
     private lateinit var binding: FragmentAddGoalBinding
     private lateinit var addGoalViewModel: AddGoalViewModel
 
@@ -24,6 +24,7 @@ class AddGoalFragment : BottomSheetDialogFragment() {
         super.onCreate(savedInstanceState)
         val activity = requireActivity()
         addGoalViewModel = ViewModelProvider(activity).get(AddGoalViewModel::class.java)
+        setStyle(STYLE_NORMAL, R.style.AppBottomSheetDialogTheme)
     }
 
     override fun onCreateView(
@@ -32,11 +33,12 @@ class AddGoalFragment : BottomSheetDialogFragment() {
     ): View? {
         binding = FragmentAddGoalBinding.inflate(inflater, container, false)
         setListeners()
+
         return binding.root
     }
 
     private fun renderCheckChips() {
-        val adapter = CheckChipAdapter(requireContext(), itemList)
+        val adapter = CheckChipAdapter(requireContext(), itemList, this)
         adapter.addToCheckChips(binding.checkChipGroup)
     }
 
@@ -57,7 +59,11 @@ class AddGoalFragment : BottomSheetDialogFragment() {
         val check = Check(id = 0, name=newCheckName, checked=false)
         itemList.add(check)
 
-        binding.addCheck.text = ""
+        binding.addCheck.setText("")
         renderCheckChips()
+    }
+
+    override fun onRemoveCheck () {
+        this.renderCheckChips()
     }
 }

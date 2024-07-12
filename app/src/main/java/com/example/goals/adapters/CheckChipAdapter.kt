@@ -10,7 +10,16 @@ import com.example.goals.models.Check
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 
-class CheckChipAdapter (private val context: Context, private val itemList: List<Check>): BaseAdapter() {
+class CheckChipAdapter (
+    private val context: Context,
+    private val itemList: MutableList<Check>,
+    private val callback: CheckChipCallback): BaseAdapter()
+{
+
+    interface CheckChipCallback {
+        fun onRemoveCheck()
+    }
+
     override fun getCount(): Int = itemList.size
 
     override fun getItem(position: Int): Check = itemList[position]
@@ -32,13 +41,18 @@ class CheckChipAdapter (private val context: Context, private val itemList: List
 
         binding.checkChip.text = itemList[position].name
         binding.checkChip.isChecked = itemList[position].checked
-
         binding.checkChip.isCloseIconVisible =  true
+
+        binding.checkChip.setOnCloseIconClickListener {
+            itemList.removeAt(position)
+            callback.onRemoveCheck()
+        }
 
         return view
     }
 
     fun addToCheckChips (chipGroup: ChipGroup) {
+        chipGroup.removeAllViews()
         for (i in 0 until count) {
             val chip = getView(i, null, chipGroup) as Chip
             chipGroup.addView(chip)
