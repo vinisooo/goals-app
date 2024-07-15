@@ -8,6 +8,11 @@
     android:layout_height="match_parent"
     tools:context=".activities.Goals">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/goalsList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
