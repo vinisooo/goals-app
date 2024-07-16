@@ -97,6 +97,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/submit_button"
         android:text="Create new goal"
         android:backgroundTint="@color/green_1"
         android:textColor="@color/white"
