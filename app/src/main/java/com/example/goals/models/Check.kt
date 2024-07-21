@@ -3,5 +3,6 @@ package com.example.goals.models
 data class Check (
     val id: Int,
     val name: String,
-    val checked: Boolean
+    val checked: Boolean,
+    val goalId: Int
 )

@@ -54,7 +54,7 @@ class AddGoalFragment : BottomSheetDialogFragment(), CheckChipAdapter.CheckChipC
     private fun addCheck () {
         val newCheckName = binding.addCheck.text.toString()
 
-        val check = Check(id = 0, name=newCheckName, checked=false)
+        val check = Check(id = 0, name=newCheckName, checked=false, goalId=0)
         itemList.add(check)
 
         binding.addCheck.setText("")

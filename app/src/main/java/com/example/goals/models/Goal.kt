@@ -5,5 +5,6 @@ data class Goal (
     val name: String,
     val description: String,
     val price: Float,
-    val percentage: Int
+    val percentage: Int,
+    val imageUrl: String
 )
