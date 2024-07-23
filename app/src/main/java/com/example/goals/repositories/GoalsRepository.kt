@@ -5,11 +5,16 @@ import android.util.Log
 import android.widget.Toast
 import com.example.goals.BuildConfig
 import com.example.goals.activities.Goals
+import com.example.goals.activities.GoalsCallback
+import com.example.goals.models.Goal
+import com.google.gson.reflect.TypeToken
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
+import org.json.JSONArray
+import org.json.JSONStringer
 import java.io.IOException
 
 class GoalsRepository(private val context: Context) {
@@ -28,7 +33,13 @@ class GoalsRepository(private val context: Context) {
 
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
-                    Log.d("GoalsRepository", "Fetch goals successful")
+                    response.body?.let { responseBody ->
+                        val goalsResponse = parseJSONGoals(responseBody.string())
+
+                        (context as? Goals)?.runOnUiThread {
+                            context.onRenderGoals(goalsResponse)
+                        }
+                    }
                 } else {
                     Log.e("GoalsRepository", "Failed to fetch goals: ${response.message}")
                     (context as? Goals)?.runOnUiThread {
@@ -37,5 +48,27 @@ class GoalsRepository(private val context: Context) {
                 }
             }
         })
+    }
+
+    fun parseJSONGoals (goalsJSON: String): MutableList<Goal> {
+        val goals = mutableListOf<Goal>()
+        val jsonArray = JSONArray(goalsJSON)
+
+        for (i in 0 until jsonArray.length()) {
+            val currentGoal = jsonArray.getJSONObject(i)
+
+            val goal = Goal(
+                id = currentGoal.getInt("id"),
+                name = currentGoal.getString("name"),
+                description = currentGoal.getString("description"),
+                imageUrl = currentGoal.optString("image_url", ""),
+                percentage = currentGoal.getInt("percentage"),
+                targetAmount = currentGoal.getDouble("target_amount").toFloat()
+            )
+
+            goals.add(goal)
+        }
+
+        return goals
     }
 }

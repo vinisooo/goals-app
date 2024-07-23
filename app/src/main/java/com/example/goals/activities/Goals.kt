@@ -3,6 +3,7 @@ package com.example.goals.activities
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.goals.adapters.GoalCardAdapter
 import com.example.goals.databinding.ActivityGoalsBinding
 import com.example.goals.fragments.AddGoalFragment
 import com.example.goals.models.Goal
@@ -10,7 +11,11 @@ import com.example.goals.repositories.GoalsRepository
 import com.example.goals.viewmodels.AddGoalViewModel
 import java.io.IOException
 
-class Goals : AppCompatActivity() {
+interface GoalsCallback {
+    fun onRenderGoals(goals: MutableList<Goal>): Unit
+}
+
+class Goals : AppCompatActivity(), GoalsCallback {
     private lateinit var binding: ActivityGoalsBinding
     private lateinit var addGoalViewModel: AddGoalViewModel
 
@@ -32,7 +37,8 @@ class Goals : AppCompatActivity() {
         val goalsRepository = GoalsRepository(this)
         goalsRepository.get()
     }
-    fun onRender () {
-
+    override fun onRenderGoals (goals: MutableList<Goal>) {
+        val adapter = GoalCardAdapter(this, goals)
+        binding.goalsList.adapter = adapter
     }
 }

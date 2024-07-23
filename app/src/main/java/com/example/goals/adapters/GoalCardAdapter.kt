@@ -16,6 +16,8 @@ class GoalCardAdapter (private val context: Context, private val itemList: Mutab
             binding.goalCard.setOnClickListener {
                 TODO("Implement intent")
             }
+
+            binding.goalName.setText(goal.name)
         }
     }
 
