@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.goals.databinding.ActivityGoalsBinding
 import com.example.goals.databinding.GoalCardBinding
 import com.example.goals.models.Goal
@@ -18,6 +19,8 @@ class GoalCardAdapter (private val context: Context, private val itemList: Mutab
             }
 
             binding.goalName.setText(goal.name)
+            println("${goal.imageUrl}")
+            Glide.with(context).load(goal.imageUrl).into(binding.goalImage)
         }
     }
 

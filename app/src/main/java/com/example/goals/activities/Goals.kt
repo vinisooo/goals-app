@@ -3,6 +3,9 @@ package com.example.goals.activities
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.goals.adapters.GoalCardAdapter
 import com.example.goals.databinding.ActivityGoalsBinding
 import com.example.goals.fragments.AddGoalFragment
@@ -38,6 +41,14 @@ class Goals : AppCompatActivity(), GoalsCallback {
         goalsRepository.get()
     }
     override fun onRenderGoals (goals: MutableList<Goal>) {
+        if(goals.size > 0) {
+            binding.ctaAddGoal.text = ""
+        }
+
+        val recyclerView = binding.goalsList
+        val staggeredLayoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        recyclerView.layoutManager = staggeredLayoutManager
+
         val adapter = GoalCardAdapter(this, goals)
         binding.goalsList.adapter = adapter
     }

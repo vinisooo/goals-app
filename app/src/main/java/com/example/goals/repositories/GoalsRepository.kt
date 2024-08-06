@@ -19,7 +19,7 @@ import java.io.IOException
 
 class GoalsRepository(private val context: Context) {
     private val client = OkHttpClient()
-    private val baseUrl = BuildConfig.API_URL
+    private val baseUrl = "http://192.168.100.4:8080/api"
 
     fun get() {
         val request = Request.Builder().url("$baseUrl/goals").build()

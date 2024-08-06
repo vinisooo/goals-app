@@ -23,6 +23,6 @@ class MainActivity : ComponentActivity() {
             val goalsIntent = Intent(this, Goals::class.java)
             startActivity(goalsIntent)
             finish()
-        }, 3000)
+        }, 1000)
     }
 }

@@ -65,6 +65,7 @@ android {
 
 dependencies {
 
+    implementation ("com.github.bumptech.glide:glide:4.15.1")
     implementation("io.github.cdimascio:dotenv-kotlin:6.4.1")
     implementation("com.google.code.gson:gson:2.8.8")
     implementation("com.google.android.material:material:1.12.0")
